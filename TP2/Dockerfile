@@ -32,3 +32,5 @@ USER 501
 
 EXPOSE 8080
 
+
+# http://geekspearls.blogspot.com/2016/08/configure-jprofiler-92-to-profiling.html

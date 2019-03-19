@@ -1,5 +1,7 @@
 import requests
 import json
+import thread
+import time
 
 """
 Mise en place de l'url de base
@@ -37,11 +39,29 @@ Header pour les requests REST
 headers = {
    "Accept": "application/json"
 }
+comp = 0
 
-for url_ in list_GET_REST_request:
+
+# charge moyenne (12 requetes séquencielles)
+def rest_call():
+   for url_ in list_GET_REST_request:
+    comp += 1
     response = requests.get(
     url= url_,
     headers=headers
     )
     data = response.json()
-    print(json.dumps(data, indent=4))
+    print(comp)
+    #print(json.dumps(data, indent=4))
+   pass
+
+
+# Charge réduite (6 requetes séquencielles)
+rest_call()
+
+# charge moyenne (12 requetes séquencielles)
+for x in range(0, 2):
+   rest_call()
+
+# charge charge augmentée ()
+# charge augmentée exceptionnelle ()
