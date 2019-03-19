@@ -1,7 +1,7 @@
 import requests
 import json
-import thread
-import time
+from threading import Thread
+from sys import argv as args
 
 """
 Mise en place de l'url de base
@@ -39,11 +39,10 @@ Header pour les requests REST
 headers = {
    "Accept": "application/json"
 }
-comp = 0
 
-
-# charge moyenne (12 requetes séquencielles)
 def rest_call():
+   comp = 0
+   # print("In thread : " + threadName)
    for url_ in list_GET_REST_request:
     comp += 1
     response = requests.get(
@@ -51,17 +50,52 @@ def rest_call():
     headers=headers
     )
     data = response.json()
-    print(comp)
+    print("Requete #" + str(comp) + "\tGET " + url_ + "\t\t" + str(response.status_code))
     #print(json.dumps(data, indent=4))
    pass
 
-
-# Charge réduite (6 requetes séquencielles)
-rest_call()
-
-# charge moyenne (12 requetes séquencielles)
-for x in range(0, 2):
+def cas_reduit():
+   # Charge réduite (sous 25% de CPU --> 5 requetes séquencielles) 
    rest_call()
 
-# charge charge augmentée ()
-# charge augmentée exceptionnelle ()
+def cas_moyen():
+   # charge moyenne (entre 25% et 50% de CPU --> 12 requetes séquencielles)
+   threads = []
+   for x in range(0, 2):
+      t1=Thread( target=rest_call)
+      threads.append(t1)
+      t1.start()
+
+def cas_augmenter():
+   # charge charge augmentée (entre 50% et 75% de CPU --> )
+   threads = []
+   for x in range(0,4):
+      t1=Thread( target=rest_call)
+      threads.append(t1)
+      t1.start()
+   pass
+
+
+def cas_exceptionnelle():
+   # charge augmentée exceptionnelle (entre 75% et 100% --> )
+   threads = []
+   for x in range(0,100):
+      t1=Thread( target=rest_call)
+      threads.append(t1)
+      t1.start()
+   pass
+
+if args[1] == "--reduit" or args[1] == "1":
+   print("Cas reduit")
+   cas_reduit()
+elif args[1] == "--moyen" or args[1] == "2":
+   print("Cas moyen")
+   cas_moyen()
+elif args[1] == "--augmenter" or args[1] == "3":
+   print("Cas augmenter")
+   cas_augmenter()
+elif args[1] == "--exceptionnelle" or args[1] == "4":
+   print("Cas exceptionnelle")
+   cas_exceptionnelle()
+else:
+   print("argument invalide")
