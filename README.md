@@ -26,6 +26,9 @@ docker exec -it wekarest bash
 ### Ensuite un choix entre 1 ou 2 vous sera proposez. Entrer 1
 ### Ensuite on vous demandera sur quel port jprofiler devra etre exposer. Entrer 8849
 
+## Installer la version 9.2 de jprofiler
+* Aller a cette addresse la : https://www.ej-technologies.com/download/jprofiler/version_92
+* Telecharger Jprofiler 9.2
 
 ### Aller sur le GUI de jprofiler et connecter vous a un remote process.
 * Entrer le ip de votre docker (peut etre trouver a l'aide de __docker info__)
