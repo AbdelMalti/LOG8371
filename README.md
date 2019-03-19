@@ -14,7 +14,7 @@ docker-compose up
 
 ### Ouvrir un nouveau terminal
 
-### Cette commande va servire a rentrer dans le container docker de weka rest pour y activer jprofiler (tuto complet : http://geekspearls.blogspot.com/2016/08/configure-jprofiler-92-to-profiling.htmls)
+### Cette commande va servire a rentrer dans le container docker de weka rest pour y activer jprofiler (tuto complet : http://geekspearls.blogspot.com/2016/08/configure-jprofiler-92-to-profiling.html)
 
 docker exec -it wekarest bash 
 
