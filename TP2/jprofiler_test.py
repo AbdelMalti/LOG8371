@@ -4,9 +4,10 @@ import json
 """
 Mise en place de l'url de base
 """
-ip_url = "localhost"
+ip_url = "http://localhost"
 port_url = "8081"
-base = ip_url + ":" + port_url
+open_api = "/openapi"
+base = ip_url + ":" + port_url + open_api
 
 """
 Mise en place de toutes les url avec GET comme type de requet REST.
