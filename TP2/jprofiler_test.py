@@ -69,7 +69,7 @@ def cas_moyen():
 def cas_augmenter():
    # charge charge augmentée (entre 50% et 75% de CPU --> )
    threads = []
-   for x in range(0,4):
+   for x in range(0,3):
       t1=Thread( target=rest_call)
       threads.append(t1)
       t1.start()
