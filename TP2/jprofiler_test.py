@@ -85,7 +85,7 @@ def cas_exceptionnelle():
       t1.start()
    pass
 
-if(len(args) > 0):
+if(len(args) > 1):
    if args[1] == "--reduit" or args[1] == "1":
       print("Cas reduit")
       cas_reduit()
