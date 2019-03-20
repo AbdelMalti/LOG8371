@@ -1,0 +1,29 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    container_name: wekarestmongo
+    restart: always
+  jguweka:
+    image: jguweka_log8371:v1
+    container_name: wekarest
+    restart: always
+    links:
+      - "mongo:mongodb"
+    # ports:
+    #   - "8081:8080"
+    #   - "8849:8849"
+    depends_on:
+      - mongo
+    labels:
+      - "service-name:jguweka"
+      - "service-type:app-srv"
+      - "environment:test"
+  lb:
+    image: dockercloud/haproxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8080:80
+    links:
+      - jguweka
