@@ -85,17 +85,28 @@ def cas_exceptionnelle():
       t1.start()
    pass
 
-if args[1] == "--reduit" or args[1] == "1":
-   print("Cas reduit")
-   cas_reduit()
-elif args[1] == "--moyen" or args[1] == "2":
-   print("Cas moyen")
-   cas_moyen()
-elif args[1] == "--augmenter" or args[1] == "3":
-   print("Cas augmenter")
-   cas_augmenter()
-elif args[1] == "--exceptionnelle" or args[1] == "4":
-   print("Cas exceptionnelle")
-   cas_exceptionnelle()
+if(len(args) > 0):
+   if args[1] == "--reduit" or args[1] == "1":
+      print("Cas reduit")
+      cas_reduit()
+   elif args[1] == "--moyen" or args[1] == "2":
+      print("Cas moyen")
+      cas_moyen()
+   elif args[1] == "--augmenter" or args[1] == "3":
+      print("Cas augmenter")
+      cas_augmenter()
+   elif args[1] == "--exceptionnelle" or args[1] == "4":
+      print("Cas exceptionnelle")
+      cas_exceptionnelle()
+   else:
+      print("argument invalide")
 else:
-   print("argument invalide")
+   print("Entrer un parametre.")
+   print(
+      """
+      Cas reduit           : 1 ou --reduit
+      Cas moyen            : 2 ou --moyen
+      Cas augmenter        : 3 ou --augmenter
+      Cas exceptionnelle   : 4 ou --exceptionnelle
+      """
+   )

@@ -2,11 +2,11 @@ version: '3'
 services:
   mongo:
     image: mongo
-    container_name: wekarestmongo
+    # container_name: wekarestmongo
     restart: always
   jguweka:
     image: jguweka_log8371:v1
-    container_name: wekarest
+    # container_name: wekarest
     restart: always
     links:
       - "mongo:mongodb"
